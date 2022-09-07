@@ -1,0 +1,634 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@import url(https://fonts.googleapis.com/css?family=Comfortaa:300,regular,500,600,700);
+:root {
+  --primary-color: rgb(224, 224, 224);
+  --secondary-color: #000;
+  --input: #e8eeef;
+}
+.dark-theme {
+  --primary-color: #101010;
+  --secondary-color: white;
+  --input: #cecece;
+}
+#icon {
+  width: 40px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  cursor: pointer;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+/* ======== */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* ======== */
+
+h3 {
+  font-weight: 400 !important;
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+h3 span {
+  color: gray;
+  font-size: 13px;
+}
+button {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  font-size: 100%;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all 0.2s, box-shadow 0.08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  padding: 10px 20px;
+}
+button:hover {
+  background-color: #324de2;
+}
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:focus {
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
+    rgba(50, 151, 211, 0.3) 0 0 0 4px;
+}
+.window-constructor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: var(--primary-color);
+  transition: all 0.2s ease-in-out;
+  padding: 10px 10px;
+}
+.window-result {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  overflow: hidden;
+  padding: 30px;
+}
+
+/* ===========TITLE============ */
+
+#title {
+  margin-left: 40px;
+}
+#title,
+#title span {
+  color: #405cf5;
+  font-size: 38px;
+  margin-bottom: 30px;
+}
+#title span {
+  background-color: var(--secondary-color);
+  padding: 20px;
+}
+#title span:first-child {
+  padding: 4px 0 4px 8px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  color: var(--primary-color);
+}
+#title span:last-child {
+  padding: 4px 8px 4px 0;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  color: var(--primary-color);
+}
+input {
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 150px;
+  background-color: var(--input);
+  color: black;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+input:focus {
+  outline: 2px solid #405cf5;
+}
+#divColor,
+#textColor {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 14px;
+  height: 40px;
+  margin: 0;
+  outline: 0;
+  padding: 10px;
+  width: 40px;
+  background-color: var(--input);
+  color: black;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  border-radius: 50%;
+}
+input[type="file"] {
+  line-height: 30px;
+  font-size: 16px;
+  height: 30px;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  width: 150px;
+  color: var(--secondary-color);
+  border-radius: 0;
+  background-color: transparent;
+  margin-top: 20px;
+}
+/* =================RESULT==================== */
+
+#div {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%) rotate(0);
+  transition: 0.2s linear;
+}
+#hexClr1,
+#hexClr2 {
+  width: 120px;
+  font-size: 15px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 3px;
+  padding-left: 25px;
+}
+#deg {
+  width: 120px;
+  font-size: 15px;
+  margin-right: 5px;
+  text-transform: uppercase;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+#hexClr1 {
+  margin-top: 10px;
+}
+#deg {
+  margin-bottom: 20px;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 50px;
+}
+
+.div-gen {
+  justify-content: space-evenly;
+  display: flex;
+}
+#textSize {
+  width: 70px !important;
+}
+
+.button-box button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#up {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#down {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#right {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+#left {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+#center {
+  position: absolute;
+  bottom: 10px;
+  left: 70px;
+  width: 90px;
+  border-radius: 10px;
+}
+#rightUp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  rotate: -45deg;
+}
+#rightDown {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  rotate: 45deg;
+}
+#leftUp {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  rotate: 45deg;
+}
+#leftDown {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  rotate: -45deg;
+}
+
+#textFont {
+  background-color: var(--input);
+  border: none;
+  font-size: 14px;
+  height: 30px;
+  margin: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  outline: 0;
+  width: 120px;
+  color: black;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  border-radius: 5px;
+}
+
+#textFont option {
+  font-family: "Poppins";
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+#textFont option:hover {
+  color: #324de2;
+}
+#opacity {
+  border: none;
+  outline: none;
+  height: 0px;
+  width: 150px;
+  display: flex;
+}
+/* ==================== */
+
+.titlebox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#palette2,
+#palette1 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background: transparent;
+  width: 15px;
+  height: 15px;
+  top: 47%;
+  left: 4px;
+  transform: translateY(-50%);
+  outline: none;
+  border: none;
+}
+
+.colorForm {
+  position: relative;
+}
+
+/* ======MEDIA QUERY====== */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #opacity {
+    width: 120px;
+  }
+  #hexClr1,
+  #hexClr2,
+  #deg {
+    width: 120px;
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+  #hexClr1 {
+    margin-top: 5px;
+  }
+  #deg {
+    margin-bottom: 10px;
+  }
+  #icon {
+    width: 30px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  #title,
+  #title span {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+  h3 {
+    font-weight: 400 !important;
+    font-size: 11px;
+    color: var(--secondary-color);
+  }
+  h3 span {
+    color: gray;
+    font-size: 10px;
+  }
+  .buttons {
+    gap: 30px;
+    margin-top: 30px;
+  }
+  button {
+    padding: 5px 10px;
+  }
+  input {
+    width: 120px;
+    height: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 10px;
+  }
+  #textFont {
+    font-size: 10px;
+    width: 90px;
+  }
+  #opacityVal {
+    display: flex;
+    line-height: 40px;
+    color: var(--secondary-color);
+    font-size: 11px;
+  }
+  input[type="file"] {
+    line-height: 30px;
+    font-size: 11px;
+    height: 30px;
+    margin: 0;
+    margin-top: 0px;
+    outline: 0;
+    padding: 0;
+    width: 150px;
+    color: var(--secondary-color);
+    border-radius: 0;
+    background-color: transparent;
+    margin-top: 20px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #icon {
+    width: 40px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  h3 {
+    font-weight: 400 !important;
+    font-size: 14px;
+    color: var(--secondary-color);
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  h3 span {
+    color: gray;
+    font-size: 13px;
+  }
+  button {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+      rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    font-size: 100%;
+    margin: 0;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all 0.2s, box-shadow 0.08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    padding: 10px 20px;
+  }
+  #title {
+    margin-left: 40px;
+  }
+  #title,
+  #title span {
+    color: #405cf5;
+    font-size: 38px;
+    margin-bottom: 30px;
+  }
+  input {
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    margin: 0;
+    outline: 0;
+    padding: 15px;
+    width: 150px;
+    background-color: var(--input);
+    color: black;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    margin-top: 30px;
+  }
+  #textFont {
+    background-color: var(--input);
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    outline: 0;
+    width: 120px;
+    color: black;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+    border-radius: 5px;
+  }
+  #hexClr1,
+  #hexClr2,
+  #deg {
+    width: 120px;
+    font-size: 15px;
+    margin-right: 5px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 3px;
+  }
+  #deg {
+    margin-bottom: 20px;
+  }
+  #opacity {
+    border: none;
+    outline: none;
+    height: 0px;
+    width: 120px;
+    display: flex;
+  }
+  #opacityVal {
+    display: flex;
+    line-height: 50px;
+    color: var(--secondary-color);
+  }
+  input[type="file"] {
+    line-height: 30px;
+    font-size: 14px;
+    height: 30px;
+    margin: 0;
+    margin-top: 0px;
+    outline: 0;
+    padding: 0;
+    width: 150px;
+    color: var(--secondary-color);
+    border-radius: 0;
+    background-color: transparent;
+    margin-top: 20px;
+  }
+}
+
+/* ================================================== */
+/* ================================================== */
+/* ================================================== */
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.window-result canvas {
+  width: 100%;
+  height: 100%;
+}
+#brush {
+  position: absolute;
+  background-color: #405cf5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: white;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 300;
+  bottom: 10px;
+  left: 170px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#brush:hover {
+  background-color: #324de2;
+}
+#stopbrush {
+  position: absolute;
+  background-color: #405cf5;
+  padding: 15px 20px;
+  border-radius: 10px;
+  color: white;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 300;
+  bottom: 10px;
+  left: 280px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+#stopbrush:hover {
+  background-color: #324de2;
+}
+.active {
+  background-color: rgb(0, 150, 0) !important;
+}
+.active:hover {
+  background-color: green !important;
+}

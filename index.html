@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIVGen</title>
+    <link rel="icon" href="favicon/favicon.ico" type=”image/x-icon”>
+
+    <!-- Font Awesome CDN link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container-fluid lmao">
+      <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+          <div class="row">
+            <div class="window-constructor">
+              <img src="img/moon.png" id="icon" alt="" />
+              <div class="titlebox">
+                <h1 id="title">Create your <span><</span><span>div></span></h1>
+              </div>
+
+              <div class="div-gen">
+                <div class="div-size">
+                  <h3>Input your width: <span>(px, em, rem)</span></h3>
+                  <input type="text" id="widthInput" placeholder="200px" />
+                  <h3>Input your height: <span>(px, em, rem)</span></h3>
+                  <input type="text" id="heightInput" placeholder="100px" />
+                  <h3>Choose div's color:</h3>
+                  <input type="color" id="divColor" />
+                  <h3>Create your own gradient:</h3>
+                  <form class="colorForm" action="">
+                    <input
+                    value="#878787"
+                      type="color"
+                      id="palette1"
+                      name="color"
+                      onchange="with (this.form) hexClr1.value = this.value"
+                    />
+
+                    <input
+                      type="text"
+                      id="hexClr1"
+                      placeholder="color 1"
+                      value="#"
+                    />
+                  </form>
+                  <form class="colorForm" action="">
+                    <input
+                    value="#FFFFFF"
+                      type="color"
+                      id="palette2"
+                      name="color"
+                      onchange="with (this.form) hexClr2.value = this.value"
+                    />
+                    <input
+                      type="text"
+                      id="hexClr2"
+                      placeholder="color 2"
+                      value="#"
+                    />
+                  </form>
+                  <input
+                    type="number"
+                    max="360"
+                    id="deg"
+                    placeholder="&#176;"
+                    onkeyup="this.value = this.value.replace(/[^\d]/g,'');"
+                  />
+                  <h3>Or upload image: <span>(first create a div)</span></h3>
+                  <input
+                    type="file"
+                    autocomplete="off"
+                    name="background-image"
+                    accept="image/*"
+                    id="getval"
+                  />
+                  <div class="buttons">
+                    <button type="submit" onclick="divOptions()">
+                      Generate
+                    </button>
+                    <button type="submit" onclick="resetAll()">Reset</button>
+                  </div>
+                </div>
+
+                <div class="div-size-2">
+                  <h3>Input your text:</h3>
+                  <input
+                    type="text"
+                    id="textInput"
+                    placeholder="Your text here"
+                  />
+
+                  <h3>Choose text color:</h3>
+                  <input type="color" id="textColor" value="#FFFFFF" />
+
+                  <h3>Choose font size and font family:</h3>
+                  <input
+                    type="number"
+                    id="textSize"
+                    value="14"
+                    onchange="fontSize()"
+                  />
+                  <select
+                    name="textFont"
+                    id="textFont"
+                    onchange="myFunction(this);"
+                  >
+                    <option value="Poppins" selected>Poppins</option>
+                    <option value="Montserrat">Montserrat</option>
+                    <option value="Comfortaa">Comfortaa</option>
+                  </select>
+
+                  <h3>Rotate your DIV:</h3>
+                  <input
+                    value="0"
+                    type="number"
+                    max="180"
+                    min="-180"
+                    id="rotateDeg"
+                    placeholder="&#176;"
+                    onchange="rotateDiv()"
+                  />
+
+                  <h3>Change opacity:</h3>
+                  <span id="opacityVal"
+                    ><input
+                      type="range"
+                      id="opacity"
+                      min="0"
+                      max="100"
+                      value="100"
+                      onchange="divOpacity()"
+                      onmousemove="divOpacity()"
+                    />
+                    &nbsp; 100%</span
+                  >
+                  <h3>Input your border radius: <span>(px or %)</span></h3>
+                  <input
+                    type="text"
+                    id="radiusInput"
+                    placeholder="100px or 50%"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+          <div class="row">
+            <div class="window-result no-select" id="window-result">
+              <canvas></canvas>
+              <div class="button-box">
+                <button id="up"><i class="fa fa-chevron-up"></i></button>
+                <button id="down"><i class="fa fa-chevron-down"></i></button>
+                <button id="left"><i class="fa fa-chevron-left"></i></button>
+                <button id="right"><i class="fa fa-chevron-right"></i></button>
+                <button id="rightUp">
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+                <button id="rightDown">
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+                <button id="leftUp"><i class="fa fa-chevron-left"></i></button>
+                <button id="leftDown">
+                  <i class="fa fa-chevron-left"></i>
+                </button>
+                <button id="center">Center</button>
+                <ul class="options">
+                  <li class="option tool" id="brush">
+                    <i class="fa fa-paintbrush"></i>
+                    <span>Brush</span>
+                  </li>
+                  <li class="option tool" id="stopbrush">
+                    <i class="fa fa-hand"></i>
+                    <span>Stop brush</span>
+                  </li>
+                </ul>
+              </div>
+              <div id="div"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="js/script.js"></script>
